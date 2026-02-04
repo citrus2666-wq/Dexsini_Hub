@@ -1,0 +1,144 @@
+:root {
+  /* Brand Colors - Professional & Impressive */
+  --color-primary: #03185a;
+  /* Core Deep Blue - Authority */
+  --color-primary-dark: #020e35;
+  --color-secondary: #0ea5e9;
+  /* Sky Blue - Innovation (Tailwind sky-500) */
+  --color-accent: #f59e0b;
+  /* Amber Gold - Premium Highlight */
+
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+
+  /* Backgrounds */
+  --bg-deep: #f8fafc;
+  /* Slate-50 - softer than pure white for professional look */
+  --bg-surface: #ffffff;
+  /* Pure white surface for cards */
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  /* High opacity for legibility */
+  --bg-glass-heavy: rgba(255, 255, 255, 0.95);
+
+  /* Text */
+  --text-main: #0f172a;
+  /* Slate-900 - Almost black, sharp readable */
+  --text-muted: #64748b;
+  /* Slate-500 */
+  --text-on-primary: #ffffff;
+
+  /* Borders */
+  --border-glass: rgba(148, 163, 184, 0.3);
+  /* Slate-400 equivalent */
+  --border-highlight: rgba(3, 24, 90, 0.2);
+
+  /* Shadows - Layered for depth */
+  --shadow-neon: 0 0 15px rgba(14, 165, 233, 0.3);
+  /* Subtle blue glow */
+  --shadow-glass:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  /* Modern soft drop shadow */
+
+  /* Fonts */
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Rajdhani', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* subtle professional gradient */
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+  border-radius: 12px;
+  /* Slightly tighter radius */
+}
+
+.glass-button {
+  background: var(--color-primary);
+  /* Use Primary by default for actions */
+  color: var(--text-on-primary);
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-body);
+  /* Switch to body font for clearer reading */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px -1px rgba(3, 24, 90, 0.2);
+}
+
+.glass-button:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(3, 24, 90, 0.3);
+}
+
+.glass-input {
+  background: var(--bg-surface);
+  border: 1px solid #cbd5e1;
+  /* Slate-300 */
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+  /* Soft blue ring */
+  background: #ffffff;
+}
+
+/* Fix for Chrome/Edge Autofill turning inputs white */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1a1b23 inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+  border-radius: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-main);
+}

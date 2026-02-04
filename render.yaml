@@ -1,0 +1,35 @@
+services:
+  # Backend Web Service (FastAPI)
+  - type: web
+    name: dexsini-backend
+    env: python
+    region: singapore # Choose your preferred region
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dexsini-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: BACKEND_CORS_ORIGINS
+        value: "https://dexsini-frontend.onrender.com" # Update this to your frontend URL after first deploy
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # Frontend Static Site (React)
+  - type: static
+    name: dexsini-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://dexsini-backend.onrender.com/api/*
+
+databases:
+  - name: dexsini-db
+    plan: free
