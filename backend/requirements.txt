@@ -1,10 +1,11 @@
 fastapi
 uvicorn
 gunicorn
-pydantic-settings
 sqlalchemy
 psycopg2-binary
 python-multipart
 passlib[bcrypt]
 python-jose[cryptography]
 python-dotenv
+pydantic[email]
+pydantic-settings
