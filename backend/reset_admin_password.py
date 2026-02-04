@@ -1,4 +1,10 @@
-from app.db.session import SessionLocal
+import sys
+import os
+
+# Add the current directory to sys.path so app can be imported
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from app.core.database import SessionLocal
 from app.models.user import User
 from app.core.security import get_password_hash
 
